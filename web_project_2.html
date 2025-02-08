@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack Your Bags - Travel Planner</title>
+    <style>
+        body {
+            font-family: Garamond, serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor:auto;
+            background: #e0ddbd;
+        }
+        
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #0b1e32;
+            padding: 15px 20px;
+            color: gold;
+            position:fixed;
+            width: 100%;
+            top: -5px;
+            z-index: 1000;
+            font-size: 2em;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration:none;
+            padding: 12px 15px;
+            transition: 0.3s;
+        }
+        
+        .navbar a:hover {
+            background: #0033663a;
+            border-radius: 5px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('cover.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: gold;
+            position: relative;
+            padding-top: 80px;
+            font-size: 30px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 2em;
+            color:gold;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .btn {
+            background: gold;
+            color: black;
+            padding: 15px 25px;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            border-radius: 30px;
+        }
+
+        .btn:hover {
+            background: darkorange;
+        }
+        .search-container {
+            margin: 100px auto 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #004d99;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .search-bar:hover {
+            width: 55%;
+            border-color: gold;
+            box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Destinations */
+        .destinations {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .destinations h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .destination-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 60px;
+        }
+
+        .destination {
+            background: #003366;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 300px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .destination:hover {
+            transform: scale(1.05);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* Contact Section */
+        .contact {
+            padding: 50px;
+            background: #003366;
+            color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .contact input, .contact textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .login {
+            padding: 50px;
+            background: #003366;
+            color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .login input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact button {
+            padding: 10px 20px;
+            background: gold;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .contact button:hover {
+            background: darkorange;
+        }
+        .login button {
+            padding: 10px 20px;
+            background: gold;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .login button:hover {
+            background: darkorange;
+        }
+
+        /* Footer */
+        .footer {
+            background: #002244;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .footer a{
+            color:gold;
+        }
+        h3{
+
+            color: gold;
+            font-size: 30px;
+        }
+        p{
+            color:aliceblue
+        }
+        .destination a{
+            color: gold;
+        }
+        .search {
+            padding: 10px 20px;
+            background: gold;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 30px;
+        }
+        .search :hover{
+            background: darkorange;
+        }
+        
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="web_project_2.html"><image src="logo.png" height="70"></image></a>
+            <b>Pack Your Bags</b>
+        </div>
+        <div>
+            <a href="#destinations">Destinations</a>
+            <a href="#contact">Contact</a>
+            <a href="#login">Login&nbsp;&nbsp;&nbsp;</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <a href="globe1.jpeg" target="_blank"><image src="logo.png" height="200"></image></a>
+        <h1>Explore the World with Us</h1>
+        <p>Your dream vacation is just a click away.</p>
+        <button class="btn" onclick="scrollToDestinations()">Discover More</button>
+    </div>
+
+    <!-- Destinations Section -->
+    <div class="destinations" id="destinations">
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search destinations...">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="search" required>Search</button>
+        </div>
+        <h2>Top Destinations in India.</h2>
+        <div class="destination-container">
+            <div class="destination">
+                <div class="ladakh">
+                <a href="lad.html" target="_blank">
+                    <div><image src="LADAKH.jpg" width="300"></image></div>
+                    <h3><image href="LADAKH.jpg"></image>
+                        Ladakh and Leh, Kashmir</h3>
+                </a><p>Breathtaking landscapes, high-altitude lakes, and monasteries..</p>
+                </div>
+            </div>
+            <div class="destination">
+                <div><image src="jaipur.jpg" width="300"></image></div>
+                <a href="jaipur.html" target="_blank">
+                    <h3>Jaipur, Rajasthan</h3>
+                </a>
+                <p>A royal destination filled with palaces, forts, and vibrant bazaars.</p>
+            </div>
+            <div class="destination">
+                <div><image src="agra.jpg" width="300"></image></div>
+                <a href="agra.html" target="_blank">
+                    <h3>Agra, Uttar Pradesh</h3>
+                </a>
+                <p>Home to one of the Seven Wonders of the World.</p>
+            </div>
+            <div class="destination">
+                <div><image src="varanasi.jpeg" width="300"></image></div>
+                <a href="varanasi.html" target="_blank">
+                    <h3>Varanasi, Uttar Pradesh</h3>
+                </a>
+                <p>Experience the divine Ganga Aarti and ancient temples.</p>
+            </div>
+            <div class="destination">
+                <div><image src="darjeeling.jpg" width="300"></image></div>
+                <a href="darjeeling.html" target="_blank">
+                    <h3>Darjeeling, West Bengal</h3>
+                </a>
+                <p>Scenic tea plantations, toy trains, and mountain views.</p>
+            </div>
+            <div class="destination">
+                <div><image src="shillong.jpg" width="300"></image></div>
+                <a href="shillong.html" target="_blank">
+                    <h3>Shillong, Meghalaya</h3>
+                </a>
+                <p>Rolling hills, waterfalls, and mesmerizing landscapes.</p>
+            </div>
+            <div class="destination">
+                <div><image src="kaziranga.jpg" width="300"></image></div>
+                <a href="kaziranga.html" target="_blank">
+                    <h3>Kaziranga National Park, Assam</h3>
+                </a>
+                <p>A UNESCO World Heritage site famous for one-horned rhinos.</p>
+            </div>
+            <div class="destination">
+                <div><image src="hyd.png" width="300"></image></div>
+                <a href="hyd.html" target="_blank">
+                    <h3>Hyderabad, Telangana</h3>
+                </a>
+                <p>A mix of history, culture, and delicious food.</p>
+            </div>
+            <div class="destination">
+                <div><image src="araku.jpg" width="300"></image></div>
+                <a href="araku.html" target="_blank">
+                    <h3>Araku Valley, Andhra Pradesh</h3>
+                </a>
+                <p>Lush green valleys, waterfalls, and tribal culture.</p>
+            </div>
+            <div class="destination">
+                <div><image src="tirupati.jpg" width="300"></image></div>
+                <a href="tirupati.html" target="_blank">
+                    <h3>Tirupati, Andhra Pradesh</h3>
+                </a>
+                <p>One of the most visited pilgrimage sites in the world.</p>
+            </div>
+            <div class="destination">
+                <div><image src="hampi.jpg" width="300"></image></div>
+                <a href="hampi.html" target="_blank">
+                    <h3>Hampi, Karnataka</h3>
+                </a>
+                <p>Ancient temples, ruins, and bouldered landscapes.</p>
+            </div>
+            <div class="destination">
+                <div><image src="coorg.jpg" width="300"></image></div>
+                <a href="coorg.html" target="_blank">
+                    <h3> Coorg, Karnataka</h3>
+                </a>
+                <p>Scenic coffee plantations and misty hills.</p>
+            </div>
+            <div class="destination">
+                <div><image src="munnar.jpg" width="300"></image></div>
+                <a href="munnar.html" target="_blank">
+                    <h3>Munnar, Kerala </h3>
+                </a>
+                <p>Rolling tea estates, mist-covered hills, and wildlife.</p>
+            </div>
+            <div class="destination">
+                <div><image src="konark.jpg" width="300"></image></div>
+                <a href="konark.html" target="_blank">
+                    <h3>Konark, Odisha</h3>
+                </a>
+                <p>Sun temple- An architectural marvel.</p>
+            </div>
+            <div class="destination">
+                <div><image src="pondy.jpg" width="300"></image></div>
+                <a href="pondy.html" target="_blank">
+                    <h3>Pondicherry, Tamil Nadu</h3>
+                </a>
+                <p>A blend of French architecture, serene beaches, and cafés.</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact" id="contact">
+        <br>
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <p></p>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+    <div class="login" id="login">
+        <h2>LOGIN/SIGNUP</h2>
+        <form>
+            <input type="email" name="email" placeholder="Enter your Email" required><br>
+            <br>
+            <input type="text" name="password" placeholder="Enter your Password" required>
+            
+            <p></p>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 Pack Your Bags. All rights reserved.
+        <b>Mail:</b> 
+        <a href="packyourbagsin@gmail.com">packyourbagsin@gmail.com</a>
+    </div>
+
+    <script>
+        function scrollToDestinations() {
+            document.getElementById('destinations').scrollIntoView({ behavior:"smooth" });
+        }
+    </script>
+    
+   
+
+</body>
+</html>
